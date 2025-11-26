@@ -1,0 +1,5 @@
+{
+    "system_name": "Orion-Server-01",
+    "cpu_count": 16,
+    "modules": ["Auth", "Database", "Cache"]
+}

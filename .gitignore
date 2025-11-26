@@ -1,0 +1,36 @@
+# Build artifacts
+/build/
+**/build/
+/cmake-build-*/
+CMakeFiles/
+CMakeCache.txt
+Makefile
+*.o
+*.obj
+*.so
+*.dll
+*.dylib
+*.exe
+
+# IDE/editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*.DS_Store
+
+# Python/Jupyter
+__pycache__/
+.ipynb_checkpoints/
+
+# Env/tools
+.env
+venv/
+.envrc
+.mamba/
+.cache/
+**/_deps/
+**/CMakeFiles/
+**/cmake_install.cmake
+**/Makefile
+**/CMakeCache.txt

@@ -1,0 +1,5 @@
+{
+  "mission_id": "Apollo-X",
+  "sensor_interval_ms": 200,
+  "readings": [10.5, 10.8, 11.2, 9.8, 10.1, 15.5, 10.0]
+}

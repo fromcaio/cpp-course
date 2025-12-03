@@ -16,6 +16,7 @@ int insertMember(Database& db, const Member& member) {
     stmt.bindText(3, member.phone());
     stmt.bindText(4, member.pix());
     stmt.step();
+    // static_cast to convert sqlite3_int64 to int
     return static_cast<int>(sqlite3_last_insert_rowid(db.handle()));
 }
 

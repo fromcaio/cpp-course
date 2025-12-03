@@ -139,7 +139,7 @@ void Database::initializeSchema() {
     )sql");
 
     exec(R"sql(
-        CREATE TABLE IF NOT EXISTS workout_plan_days(
+        CREATE TABLE IF NOT EXISTS workout_block(
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             plan_id INTEGER NOT NULL,
             day_index INTEGER NOT NULL,
@@ -150,12 +150,12 @@ void Database::initializeSchema() {
     exec(R"sql(
         CREATE TABLE IF NOT EXISTS exercises(
             id INTEGER PRIMARY KEY AUTOINCREMENT,
-            day_id INTEGER NOT NULL,
+            workout_block_id INTEGER NOT NULL,
             name TEXT NOT NULL,
             sets INTEGER NOT NULL DEFAULT 0,
             reps INTEGER NOT NULL DEFAULT 0,
             weight REAL NOT NULL DEFAULT 0,
-            FOREIGN KEY(day_id) REFERENCES workout_plan_days(id) ON DELETE CASCADE
+            FOREIGN KEY(workout_block_id) REFERENCES workout_block(id) ON DELETE CASCADE
         );
     )sql");
 }

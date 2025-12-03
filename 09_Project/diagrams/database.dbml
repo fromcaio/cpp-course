@@ -1,0 +1,42 @@
+Table members {
+  id INTEGER [pk, increment]
+  name TEXT [not null]
+  cpf TEXT
+  phone TEXT
+  pix TEXT
+}
+
+Table payments {
+  id INTEGER [pk, increment]
+  member_id INTEGER [not null, ref: > members.id]
+  amount REAL [not null]
+  date TEXT [not null]
+  duration TEXT [not null]
+}
+
+Table checkins {
+  id INTEGER [pk, increment]
+  member_id INTEGER [not null, ref: > members.id]
+  date TEXT [not null]
+  time TEXT
+}
+
+Table workout_plans {
+  id INTEGER [pk, increment]
+  member_id INTEGER [not null, ref: > members.id]
+}
+
+Table workout_block {
+  id INTEGER [pk, increment]
+  plan_id INTEGER [not null, ref: > workout_plans.id]
+  day_index INTEGER [not null]
+}
+
+Table exercises {
+  id INTEGER [pk, increment]
+  day_id INTEGER [not null, ref: > workout_block.id]
+  name TEXT [not null]
+  sets INTEGER [not null, default: 0]
+  reps INTEGER [not null, default: 0]
+  weight REAL [not null, default: 0]
+}

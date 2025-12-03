@@ -7,15 +7,26 @@
 #include <string>
 
 class Statement {
+private:
+    sqlite3_stmt* stmt_{nullptr};
+    bool done_{false};
 public:
+// we recieve a pointer to the database and the sql string
+// we prepare the sql statement using sqlite3_prepare_v2
+// the prepared statement is stored in stmt_ attribute
     Statement(sqlite3* db, const std::string& sql);
+// we finalize the prepared statement to release resources
     ~Statement();
-
+// prevent copy
     Statement(const Statement&) = delete;
+// prevent copy assignment
     Statement& operator=(const Statement&) = delete;
+// prevent move
     Statement(Statement&&) = delete;
+// prevent move assignment
     Statement& operator=(Statement&&) = delete;
 
+// 
     void bindText(int index, const std::string& value);
     void bindDouble(int index, double value);
     void bindInt(int index, int value);
@@ -26,13 +37,12 @@ public:
     std::string columnText(int index) const;
     int columnInt(int index) const;
     double columnDouble(int index) const;
-
-private:
-    sqlite3_stmt* stmt_{nullptr};
-    bool done_{false};
 };
 
 class Database {
+private:
+    sqlite3* db_{nullptr};
+
 public:
     // Explicit prevent implicit conversions, e.g.
     // Database db("gym.db"); is valid
@@ -57,7 +67,4 @@ public:
 
     void exec(const std::string& sql);
     void initializeSchema();
-
-private:
-    sqlite3* db_{nullptr};
 };

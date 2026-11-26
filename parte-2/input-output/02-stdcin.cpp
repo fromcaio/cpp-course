@@ -40,5 +40,15 @@ int main() {
     // o que é importante notar é que o segundo std::cin não vai esperar o usuário fornecer uma entrada, ele vai direto no buffer
     // isso acontece, quando realizamos essa operaçõa o buffer é analisado, e havendo dados no buffer eles são lidos, se o buffer estiver vazio, ou só contiver caracteres que são ignorados, o std::cin vai esperar o usuário fornecer uma entrada
 
+    // da mesma maneira que é possivel imprimir mais de um dado em uma unica setença de código, também é possivel ler mais de um dado em uma sentença de código, como no exemplo abaixo
+
+    std::cout << "Digite dois numeros: ";
+    std::cin >> x >> y;
+    std::cout << "Os numeros digitados foram: " << x << " e " << y << '\n';
+
+    // OBS: a biblioteca iostream não nos fornece uma maneira de aceitar entradas do terminal sem que o usuário aperte a tecla enter (que envia para o buffer). Caso isso seja necessário é preciso utilizar bibliotecas desenvolvidas por terceiros, como a FXTUI, cpp-terminal ou notcurses. Muitas bibliotecas de interface gráfica também tem suas próprias funções para fazer esse tipo de operação, como a Qt, por exemplo.
+
+    // std::cin possui buffer, porque isso nos permite separar a entrada de dados da extração dos dados que foram inseridos. Ou seja, podemos inserir vários dados de uma vez, e depois extrair esses dados do buffer, sem precisar esperar o usuário fornecer cada dado individualmente.
+    
     return 0;
 }
